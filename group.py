@@ -1,10 +1,11 @@
 """
 Database Management Module
 
-This module is responsible 
-for handling all database 
+
+This module is responsible
+for handling all database
 operations, including
-connecting to the database, 
+connecting to the database,
 adding new recipes, retrieving
 recipes, and updating
 existing recipes.
@@ -21,22 +22,25 @@ def connect_db():
     pass
 def add_recipe(recipe):
     """
-    Adds a new recipe to 
+    Adds a new recipe to
     the database.
 
+
     Parameters:
-        recipe (dict): A dictionary 
+        recipe (dict): A dictionary
         containing recipe details.
 
+
     Returns:
-        bool: True if the recipe was 
+        bool: True if the recipe was
         added successfully, False otherwise.
     """
     pass
 def get_recipe(recipe_id):
     """
-    Retrieves a recipe from the 
+    Retrieves a recipe from the
     database based on its ID.
+
 
     Parameters:
         recipe_id (int): The unique
