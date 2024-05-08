@@ -28,10 +28,42 @@ class TestRecipeBook(unittest.TestCase):
         
         
     def test_delete_recipe(self): #Daniel, 1st Unit Test
-        
+        # Create a RecipeBook object
+
+        recipe_book = RecipeBook(self.filename)
+
+ 
+
+        # Test deleting an existing recipe
+
+        recipe_book.delete_recipe("Salad")
+
+        self.assertEqual(len(recipe_book.recipes), 1)  # Check if the recipe is deleted
+
+ 
+
+        # Test deleting a non-existing recipe
+
+        recipe_book.delete_recipe("Burger")  # Burger recipe doesn't exist
+
+        self.assertEqual(len(recipe_book.recipes), 1)  # Check if the recipes remain unchanged
         
     def test_display_recipe(self): #Daniel, 2nd Unit Test
-        
+          # Create a RecipeBook object
+
+        recipe_book = RecipeBook(self.filename)
+
+ 
+
+        # Test displaying an existing recipe
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+
+            recipe_book.display_recipe("Pasta")
+
+            output = fake_out.getvalue().strip()
+
+            self.assertIn("Recipe: Pasta", output)  # Check if the recipe is found
         
     def test_list_recipes(self): #Arafat, 1st Unit Test
           # Create a RecipeBook object
