@@ -25,13 +25,51 @@ class RecipeBook:
         Driver: Daniel (1st Function)
         Navigator: Sriram
         """    
-        
+          # Check if the recipe exists
+
+        for recipe in self.recipes:
+
+            if recipe.name.lower() == name.lower():
+
+                self.recipes.remove(recipe)
+
+                # Update the file with the modified list of recipes
+
+                with open(self.filename, 'w') as file:
+
+                    for recipe in self.recipes:
+
+                        file.write(f"{recipe.name},{','.join(recipe.ingredients)}\n")
+
+                print(f"Recipe '{name}' deleted.")
+
+                return
+
+ 
+
+        # Recipe not found
+
+        print("Recipe not found.")
     def display_recipe(self, name):
         """
         Driver: Daniel (2nd Function)
         Navigator: Sriram
         """    
-             
+         for recipe in self.recipes:
+
+            if recipe.name.lower() == name.lower():
+
+                print(f"Recipe: {recipe.name}")
+
+                print("Ingredients:")
+
+                for ingredient in recipe.ingredients:
+
+                    print("-", ingredient)
+
+                return
+
+        print("Recipe not found")     
     def list_recipes(self):
         """
         Driver: Arafat (1st Function)
