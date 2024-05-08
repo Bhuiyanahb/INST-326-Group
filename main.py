@@ -10,39 +10,40 @@ class RecipeBook:
 
     def load_recipes(self):
         """
-        Driver: Sriram
+        Driver: Sriram (1st Function)
         Navigator: Daniel
         """      
         
     def add_recipe(self, recipe):
         """
-        Driver: Sriram
+        Driver: Sriram (2nd Function)
         Navigator: Daniel
         """          
         
     def delete_recipe(self, name):
         """
-        Driver: Daniel
+        Driver: Daniel (1st Function)
         Navigator: Sriram
         """    
         
     def display_recipe(self, name):
         """
-        Driver: Daniel
+        Driver: Daniel (2nd Function)
         Navigator: Sriram
         """    
              
     def list_recipes(self):
         """
-        Driver: Arafat 
+        Driver: Arafat (1st Function)
         Navigator: Dimitri
         """  
               
     def edit_recipe(self, name):
         """
-        Driver: Arafat 
+        Driver: Arafat (2nd Function)
         Navigator: Dimitri
         """
+        
     def search_recipe_book(self, name):
         """
         Driver: Dimitri 
