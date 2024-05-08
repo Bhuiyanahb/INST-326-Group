@@ -37,13 +37,20 @@ class RecipeBook:
         Driver: Arafat (1st Function)
         Navigator: Dimitri
         """  
-              
+        for recipe in self.recipes:
+            print(f"- {recipe.name}")
+        print(" ")
+        print("End of List")
+        return True   
     def edit_recipe(self, name):
         """
         Driver: Arafat (2nd Function)
         Navigator: Dimitri
         """
-        
+        choice = input("Do you want to edit this recipe? (yes/no): ")
+        if choice.lower() == 'yes':
+            new_ingredients = input("Enter new ingredients (separated by commas): ").split(',')
+            found_recipe.ingredients = new_ingredients
     def search_recipe_book(self, name):
         """
         Driver: Dimitri 
