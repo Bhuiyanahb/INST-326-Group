@@ -13,13 +13,55 @@ class RecipeBook:
         Driver: Sriram (1st Function)
         Navigator: Daniel
         """      
-        
+        try:
+
+            with open(self.filename, 'r') as file:
+
+                recipes = []
+
+                for line in file:
+
+                    name, *ingredients = line.strip().split(',')
+
+                    recipes.append(Recipe(name, ingredients))
+
+                return recipes
+
+        except FileNotFoundError:
+
+            return []
     def add_recipe(self, recipe):
         """
         Driver: Sriram (2nd Function)
         Navigator: Daniel
         """          
-        
+        # Check if the recipe name already exists (case-insensitive comparison)
+
+        if any(existing_recipe.name.lower() == recipe.name.lower() for existing_recipe in self.recipes):
+
+            print("This recipe already exists.")
+
+            return
+
+ 
+
+        # If the recipe is unique, prompt for ingredients and add it to the file
+
+        with open(self.filename, 'a') as file:
+
+            file.write(f"{recipe.name},{','.join(recipe.ingredients)}\n")
+
+        print("Recipe added")
+
+ 
+
+        # Reload recipes immediately after adding a new recipe
+
+        self.recipes = self.load_recipes()
+
+ 
+
+        print(f"Total recipes: {len(self.recipes)}")
     def delete_recipe(self, name):
         """
         Driver: Daniel (1st Function)
