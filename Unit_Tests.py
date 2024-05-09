@@ -22,10 +22,36 @@ class TestRecipeBook(unittest.TestCase):
         os.remove(self.filename)
 
     def test_load_recipes(self): #Sriram, 1st Unit Test
-        
+        # Create a RecipeBook object
+
+        recipe_book = RecipeBook(self.filename)
+
+ 
+
+        # Test loading recipes from the file
+
+        self.assertEqual(len(recipe_book.recipes), 2)  # Check if the correct number of recipes is loaded
         
     def test_add_recipe(self): #Sriram, 2nd Unit Test
-        
+         # Create a RecipeBook object
+
+        recipe_book = RecipeBook(self.filename)
+
+ 
+
+        # Test adding a new recipe
+
+        recipe_book.add_recipe(Recipe("Pizza", ["Dough", "Cheese", "Tomato sauce"]))
+
+        self.assertEqual(len(recipe_book.recipes), 3)  # Check if the recipe is added
+
+ 
+
+        # Test adding a duplicate recipe
+
+        recipe_book.add_recipe(Recipe("Pasta", ["Spaghetti"]))  # Pasta recipe already exists
+
+        self.assertEqual(len(recipe_book.recipes), 3)  # Check if the recipe is not added again
         
     def test_delete_recipe(self): #Daniel, 1st Unit Test
         # Create a RecipeBook object
