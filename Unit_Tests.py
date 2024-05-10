@@ -23,77 +23,49 @@ class TestRecipeBook(unittest.TestCase):
 
     def test_load_recipes(self): #Sriram, 1st Unit Test
         # Create a RecipeBook object
-
         recipe_book = RecipeBook(self.filename)
-
- 
-
+        
         # Test loading recipes from the file
-
         self.assertEqual(len(recipe_book.recipes), 2)  # Check if the correct number of recipes is loaded
         
     def test_add_recipe(self): #Sriram, 2nd Unit Test
          # Create a RecipeBook object
-
         recipe_book = RecipeBook(self.filename)
 
- 
-
         # Test adding a new recipe
-
         recipe_book.add_recipe(Recipe("Pizza", ["Dough", "Cheese", "Tomato sauce"]))
-
         self.assertEqual(len(recipe_book.recipes), 3)  # Check if the recipe is added
 
- 
-
         # Test adding a duplicate recipe
-
         recipe_book.add_recipe(Recipe("Pasta", ["Spaghetti"]))  # Pasta recipe already exists
-
         self.assertEqual(len(recipe_book.recipes), 3)  # Check if the recipe is not added again
         
     def test_delete_recipe(self): #Daniel, 1st Unit Test
         # Create a RecipeBook object
-
         recipe_book = RecipeBook(self.filename)
 
- 
-
         # Test deleting an existing recipe
-
         recipe_book.delete_recipe("Salad")
-
         self.assertEqual(len(recipe_book.recipes), 1)  # Check if the recipe is deleted
 
- 
-
         # Test deleting a non-existing recipe
-
         recipe_book.delete_recipe("Burger")  # Burger recipe doesn't exist
-
         self.assertEqual(len(recipe_book.recipes), 1)  # Check if the recipes remain unchanged
         
     def test_display_recipe(self): #Daniel, 2nd Unit Test
           # Create a RecipeBook object
-
         recipe_book = RecipeBook(self.filename)
 
- 
-
         # Test displaying an existing recipe
-
         with patch('sys.stdout', new=StringIO()) as fake_out:
-
             recipe_book.display_recipe("Pasta")
-
             output = fake_out.getvalue().strip()
-
             self.assertIn("Recipe: Pasta", output)  # Check if the recipe is found
         
     def test_list_recipes(self): #Arafat, 1st Unit Test
           # Create a RecipeBook object
         recipe_book = RecipeBook(self.filename)
+        
         # Test listing recipes
         with patch('sys.stdout', new=StringIO()) as fake_out:
             recipe_book.list_recipes()
@@ -103,11 +75,17 @@ class TestRecipeBook(unittest.TestCase):
     def test_edit_recipe(self): #Arafat, 2nd Unit Test
          # Create a RecipeBook object
         recipe_book = RecipeBook(self.filename)
+        
         # Test editing an existing recipe
         with patch('builtins.input', side_effect=["yes", "Cheese, Pepperoni"]):
             recipe_book.edit_recipe("Pasta")
             self.assertEqual([ingredient.strip() for ingredient in recipe_book.recipes[0].ingredients], ["Cheese", "Pepperoni"])
-
+            
+        # Test editing a non-existing recipe
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            recipe_book.edit_recipe("Burger")
+            output = fake_out.getvalue().strip()
+            self.assertEqual(output, "Recipe not found.")
 
     def test_search_recipe_book(self): #Dimitri, Only Unit Test
         # Create a RecipeBook object
