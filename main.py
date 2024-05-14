@@ -1,10 +1,24 @@
 class Recipe:
     def __init__(self, name, ingredients):
+        """
+        Initializes a Recipe object with a name and a list of ingredients.
+
+        Parameters:
+            name (str): The name of a recipe.
+            ingredients (list): The list of ingredients in recipe.
+        """
+
         self.name = name
         self.ingredients = ingredients
 
 class RecipeBook:
     def __init__(self, filename):
+        """
+        Initializes a RecipeBook object with a filename and loads recipes from the file.
+
+        Parameters:
+            filename (str): The name of the file containing recipes.
+        """
         self.filename = filename
         self.recipes = self.load_recipes()
 
@@ -12,6 +26,11 @@ class RecipeBook:
         """
         Driver: Sriram (1st Function)
         Navigator: Daniel
+        -----------------------------
+        Loads recipes from the specified file.
+
+        Returns:
+            list of Recipe: The list of Recipe objects loaded from the file.
         """      
         try:
             with open(self.filename, 'r') as file:
@@ -27,6 +46,11 @@ class RecipeBook:
         """
         Driver: Sriram (2nd Function)
         Navigator: Daniel
+        -----------------------------
+        Adds a new recipe to the recipe book.
+
+        Parameters:
+            recipe (Recipe): The Recipe object to add to the recipe book.
         """          
         if any(existing_recipe.name.lower() == recipe.name.lower() for existing_recipe in self.recipes):
             print("This recipe already exists.")
@@ -43,6 +67,11 @@ class RecipeBook:
         """
         Driver: Daniel (1st Function)
         Navigator: Sriram
+        -----------------------------
+        Deletes a recipe from the recipe book.
+
+        Parameters:
+            name (str): The name of the recipe to delete.
         """    
         for recipe in self.recipes:
             if recipe.name.lower() == name.lower():
@@ -61,6 +90,11 @@ class RecipeBook:
         """
         Driver: Daniel (2nd Function)
         Navigator: Sriram
+        -----------------------------
+        Displays details of a recipe.
+
+        Parameters:
+            name (str): The name of the recipe to display.
         """    
         for recipe in self.recipes:
             if recipe.name.lower() == name.lower():
@@ -75,6 +109,9 @@ class RecipeBook:
         """
         Driver: Arafat (1st Function)
         Navigator: Dimitri
+        -----------------------------
+        Lists all recipes in the recipe book.
+
         """  
         if not self.recipes:
             print("No recipes found.")
@@ -91,7 +128,12 @@ class RecipeBook:
     def edit_recipe(self, name):
         """
         Driver: Arafat (2nd Function)
-        Navigator: Dimitri
+        Navigator: Dimitri        
+        -----------------------------
+        Edits a recipe in the recipe book.
+
+        Parameters:
+            name (str): The name of the recipe to edit.
         """
         found_recipe = None
         for recipe in self.recipes:
@@ -128,7 +170,12 @@ class RecipeBook:
     def search_recipe_book(self, name):
         """
         Driver: Dimitri 
-        Navigator: Arafat
+        Navigator: Arafat     
+        -----------------------------
+        Searches for a recipe in the recipe book.
+
+        Parameters:
+            name (str): The name of the recipe to search for.
         """
         for recipe in self.recipes:
             if recipe.name.lower() == name.lower():
@@ -139,7 +186,9 @@ class RecipeBook:
 def main():
     """
     Driver: Dimitri 
-    Navigator: Arafat
+    Navigator: Arafat    
+    -----------------------------
+    Main function to interact with the RecipeBook.
     """
     recipe_book = RecipeBook("recipes.txt")
 
